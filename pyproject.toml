@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "ce-5073-3-1-tasca-avaluable"
+version = "0.1.0"
+description = "Machine learning models training for the Iris dataset (https://archive.ics.uci.edu/dataset/53/iris)"
+authors = ["Jorge Cortés <jcortesanguita@gmail.com>"]
+license = "MIT License"
+readme = "README.md"
+packages = [{include = "ce_5073_3_1_tasca_avaluable"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
