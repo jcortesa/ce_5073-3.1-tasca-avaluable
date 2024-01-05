@@ -13,17 +13,20 @@ labels = {
     2: 'Iris Virginica'
 }
 
+with open('models/0-standard-scaler-model.pck', 'rb') as f:
+    sc, X_train, X_test, X_train_std, X_test_std, y_train, y_test = pickle.load(f)
+
 with open('models/1-logistic-regression-model.pck', 'rb') as f:
-    lr_sc, lr_model = pickle.load(f)
+    lr_model = pickle.load(f)
 
 with open('models/2-support-vector-machine-model.pck', 'rb') as f:
-    svm_sc, svm_model = pickle.load(f)
+    svm_model = pickle.load(f)
 
 with open('models/3-decision-tree-model.pck', 'rb') as f:
     dt_model = pickle.load(f)
 
 with open('models/4-k-nearest-neighbours-model.pck', 'rb') as f:
-    knn_sc, knn_model = pickle.load(f)
+    knn_model = pickle.load(f)
 
 @app.route('/logistic-regression/predict', methods=['POST'])
 def logistic_regression_predict():
@@ -33,7 +36,7 @@ def logistic_regression_predict():
 
     class_label, class_probability = predict_logistic_regression(petal_length,
                                                                  petal_width,
-                                                                 lr_sc,
+                                                                 sc,
                                                                  lr_model)
     
     result = {
@@ -51,7 +54,7 @@ def support_vector_machine_predict():
 
     class_label, class_probability = predict_support_vector_machine(petal_length,
                                                                  petal_width,
-                                                                 lr_sc,
+                                                                 sc,
                                                                  lr_model)
     
     result = {
@@ -87,7 +90,7 @@ def k_nearest_neighbours_predict():
 
     class_label, class_probability = predict_k_nearest_neighbours(petal_length,
                                                                  petal_width,
-                                                                 knn_sc,
+                                                                 sc,
                                                                  knn_model)
     
     result = {
